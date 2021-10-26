@@ -18,6 +18,7 @@ import Nav from '../../components/Nav'
 import {mapState,mapGetters,mapMutations,mapActions} from 'vuex'
 
 // 2s 之后返回双倍的值
+/*
 function doubleAfter2seconds(num) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -31,6 +32,7 @@ async function testResult() {
 }
 
 testResult();
+*/
 
 export default {
   name: 'Home',
@@ -46,24 +48,23 @@ export default {
       }
   },
   computed:{
-    ...mapState(['count','age','num','name']),
-    /*
+    // ...mapState(['count','age','num','name']),
     ...mapState({
       count:'count',
       age:'age',
       num:'num',
       name:'name',
     }),
-    */
     ...mapGetters(['doneTodo','nameInfo','fullInfo']),
   },
   mounted(){
+    // console.log(this)
     console.log(this.$store.state.count)
   },
   methods:{
     ...mapActions(['asyncEdit']),
     changeName(){
-      console.log('----------');
+      console.log(this);
       this.$store.dispatch('asyncEdit', {age:15});
     }
   }
